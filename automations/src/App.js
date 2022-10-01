@@ -61,19 +61,23 @@ const useStyles = makeStyles({
 const columns = [
   {
     name: 'Sl',
+    sortable: true,
     selector: row => row?.id,
   },
   {
     name: 'Name',
+    sortable: true,
     selector: row => row?.name,
   },
   {
     name: 'Code',
+    sortable: true,
     selector: row => row?.code,
 
   },
   {
     name: 'Availability',
+    sortable: true,
     cell: (row) => (
       <>
         {row?.availability === undefined ? <> ~  </> : <>
@@ -86,6 +90,7 @@ const columns = [
   },
   {
     name: 'Need to repair',
+    sortable: true,
     cell: (row) => (
       <>
         {row?.needing_repair === undefined ? <> ~  </> : <>
@@ -98,14 +103,17 @@ const columns = [
   },
   {
     name: 'Durability',
+    sortable: true,
     selector: row => row?.durability,
   },
   {
     name: 'Price',
+    sortable: true,
     selector: row => row?.price,
   },
   {
     name: 'Mileage',
+    sortable: true,
     cell: (row) => (
       <>
         {row?.mileage === null ? <> ~  </> : <>   {`${row?.mileage}`} </>}
@@ -114,6 +122,7 @@ const columns = [
   },
   {
     name: 'Minimum Rent Period',
+    sortable: true,
     cell: (row) => (
       <>
         {row?.minimum_rent_period}
@@ -245,7 +254,7 @@ function App() {
   const returnOk = () => {
     setOpenReturn(false)
     const dataFound = Data?.datalist.find(element => element?.id === nameList?.id)
-    if (dataFound?.type === "plain" & days(dateStart, dateEnd) > 0) {
+    if (dataFound?.type === "plain" & days(dateStart, dateEnd) > dataFound?.minimum_rent_period & dataFound?.availability === true & dataFound?.needing_repair === false ) {
       const durabilityResult = dataFound.durability - days(dateStart, dateEnd)
       const dataMultiplication = dataFound?.price * days(dateStart, dateEnd)
       Swal.fire({
@@ -263,7 +272,9 @@ function App() {
         }
       }).then((result) => {
         if (result.isConfirmed === true) {
-          console.log(nameList, "result")
+          toast.success("Successfully ", {
+            position: toast.POSITION.TOP_RIGHT
+          })
         } else {
 
         }
@@ -287,7 +298,7 @@ function App() {
         })
       }
     }
-    if (dataFound?.type === "meter" & days(dateStart, dateEnd) > 0) {
+    if (dataFound?.type === "meter" & days(dateStart, dateEnd) > dataFound?.minimum_rent_period & dataFound?.availability === true & dataFound?.needing_repair === false) {
       // meterDate
       const durabilityResult = days(dateStart, dateEnd) * 2 + meterDate
       const totalDurabilityResult = dataFound.durability - durabilityResult
@@ -307,7 +318,9 @@ function App() {
         }
       }).then((result) => {
         if (result.isConfirmed === true) {
-          console.log(nameList, "result")
+          toast.success("Successfully ", {
+            position: toast.POSITION.TOP_RIGHT
+          })
         } else {
 
         }
