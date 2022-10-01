@@ -1,0 +1,86 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
+.App {
+  background: #f0f2f5;
+}
+
+body {
+  background: #f0f2f5;
+}
+
+.table__area {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, .1), 0 2px 4px -1px rgba(0, 0, 0, .06);
+  margin-top: 100px !important;
+  width: 70%;
+  margin: auto;
+  border-radius: 5px;
+  background: #fff;
+}
+
+.rdt_TableRow:nth-child(odd) {
+  background-color: #f0f2f5 !important;
+}
+
+.table__btn_area {
+  width: 100%;
+  text-align: right;
+  padding: 10px 0;
+}
+
+.table__btn_area button {
+  margin-right: 20px;
+  background: #e91e63;
+  padding: 7px 20px;
+  border: none;
+  border-radius: 5px;
+  letter-spacing: .6px;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.table__btn_area button:last-child {
+  background: #4e4e51;
+}
+.true {
+  background: green;
+  padding: 2px 15px;
+	color: #fff;
+	line-height: 15px;
+	border-radius: 20px;
+	text-transform: capitalize;
+  font-size: 12px;
+}
+.false {
+  background: #db2164;
+  padding: 2px 15px;
+	color: #fff;
+	line-height: 15px;
+	border-radius: 20px;
+	text-transform: capitalize;
+  font-size: 12px;
+}
+.form-control {
+	padding: 16px .75rem;
+	
+}
+.add_money_trsfer_h_txt {
+  font-size: 16px;
+  padding: 15px 0;
+  margin: 0;
+}
+.form-control {
+	margin: 0px !important;
+}
+.date_area {
+  width: 100%;
+  float: left;
+  display: block;
+  padding: 15px 0;
+}
+.date_area label {
+	font-weight: bold;
+	padding-bottom: 8px;
+	font-size: 13px;
+	color: #626262;
+	letter-spacing: .2px;
+}
