@@ -389,16 +389,17 @@ function App() {
 
   const requestSearch = (searchedVal) => {
     const filteredRows = Data.datalist.filter((row) => {
-      console.log(row, "9999999999")
-      return row.name.toLowerCase().includes(searchedVal?.toLowerCase());
+      console.log(typeof (row.availability))
+      return row.name.toLowerCase().includes(searchedVal?.toLowerCase()) || 
+             row.code.toLowerCase().includes(searchedVal?.toLowerCase()) ||
+             row.id.toLowerCase().includes(searchedVal?.toLowerCase()) ||
+             row.price > parseInt(searchedVal) ||
+             row.price === parseInt(searchedVal) ||
+             row.durability === parseInt(searchedVal) ||
+             row.availability.toString().toLowerCase().includes(searchedVal?.toLowerCase()) 
+            //  row.price.includes(Number(searchedVal)) 
     });
     setData(filteredRows);
-    // if(filteredRows === []) {
-      
-    // } else {
-    //   setData(Data.datalist);
-    // }
-    // setData(Data.datalist);
   };
   const classes = useStyles()
   return (
