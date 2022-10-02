@@ -236,13 +236,19 @@ function App() {
       }
       //
       if (days(dateStart, dateEnd) < dataFound?.minimum_rent_period) {
-        toast.error("Minimum rent period not valid ", {
+        toast.error("Book more than the minimum rent", {
           position: toast.POSITION.TOP_RIGHT
         })
       }
       // 
       if (dataFound?.needing_repair === true) {
-        toast.error("Your Need Repair ", {
+        toast.error("This product is not repaired", {
+          position: toast.POSITION.TOP_RIGHT
+        })
+      }
+      // 
+      if (dataFound?.availability === false) {
+        toast.error("This product is not available", {
           position: toast.POSITION.TOP_RIGHT
         })
       }
@@ -280,6 +286,7 @@ function App() {
         }
       })
     } else {
+       // 
       if (days(dateStart, dateEnd) < 0) {
         toast.error("Please Enter Valid Data ", {
           position: toast.POSITION.TOP_RIGHT
@@ -287,13 +294,19 @@ function App() {
       }
       //
       if (days(dateStart, dateEnd) < dataFound?.minimum_rent_period) {
-        toast.error("Minimum rent period not valid ", {
+        toast.error("Book more than the minimum rent", {
           position: toast.POSITION.TOP_RIGHT
         })
       }
       // 
       if (dataFound?.needing_repair === true) {
-        toast.error("Your Need Repair ", {
+        toast.error("This product is not repaired", {
+          position: toast.POSITION.TOP_RIGHT
+        })
+      }
+      // 
+      if (dataFound?.availability === false) {
+        toast.error("This product is not available", {
           position: toast.POSITION.TOP_RIGHT
         })
       }
@@ -326,7 +339,30 @@ function App() {
         }
       })
     } else {
-      
+       // 
+       if (days(dateStart, dateEnd) < 0) {
+        toast.error("Please Enter Valid Data ", {
+          position: toast.POSITION.TOP_RIGHT
+        })
+      }
+      //
+      if (days(dateStart, dateEnd) < dataFound?.minimum_rent_period) {
+        toast.error("Book more than the minimum rent", {
+          position: toast.POSITION.TOP_RIGHT
+        })
+      }
+      // 
+      if (dataFound?.needing_repair === true) {
+        toast.error("This product is not repaired", {
+          position: toast.POSITION.TOP_RIGHT
+        })
+      }
+      // 
+      if (dataFound?.availability === false) {
+        toast.error("This product is not available", {
+          position: toast.POSITION.TOP_RIGHT
+        })
+      }
     }
 
   }
