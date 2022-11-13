@@ -18,7 +18,6 @@ import Button from '@mui/material/Button';
 import { IconButton } from '@material-ui/core';
 import { SearchOutlined } from '@material-ui/icons';
 import Data from "./data.json"
-
 const style = {
   position: "absolute",
   top: "50%",
@@ -260,7 +259,7 @@ function App() {
   const returnOk = () => {
     setOpenReturn(false)
     const dataFound = Data?.datalist.find(element => element?.id === nameList?.id)
-    if (dataFound?.type === "plain" & days(dateStart, dateEnd) > dataFound?.minimum_rent_period & dataFound?.availability === true & dataFound?.needing_repair === false ) {
+    if (dataFound?.type === "plain" & days(dateStart, dateEnd) > dataFound?.minimum_rent_period & dataFound?.availability === true & dataFound?.needing_repair === false) {
       const durabilityResult = dataFound.durability - days(dateStart, dateEnd)
       const dataMultiplication = dataFound?.price * days(dateStart, dateEnd)
       Swal.fire({
@@ -286,7 +285,7 @@ function App() {
         }
       })
     } else {
-       // 
+      // 
       if (days(dateStart, dateEnd) < 0) {
         toast.error("Please Enter Valid Data ", {
           position: toast.POSITION.TOP_RIGHT
@@ -339,8 +338,8 @@ function App() {
         }
       })
     } else {
-       // 
-       if (days(dateStart, dateEnd) < 0) {
+      // 
+      if (days(dateStart, dateEnd) < 0) {
         toast.error("Please Enter Valid Data ", {
           position: toast.POSITION.TOP_RIGHT
         })
@@ -390,14 +389,14 @@ function App() {
   const requestSearch = (searchedVal) => {
     const filteredRows = Data.datalist.filter((row) => {
       console.log(typeof (row.availability))
-      return row.name.toLowerCase().includes(searchedVal?.toLowerCase()) || 
-             row.code.toLowerCase().includes(searchedVal?.toLowerCase()) ||
-             row.id.toLowerCase().includes(searchedVal?.toLowerCase()) ||
-             row.price > parseInt(searchedVal) ||
-             row.price === parseInt(searchedVal) ||
-             row.durability === parseInt(searchedVal) ||
-             row.availability.toString().toLowerCase().includes(searchedVal?.toLowerCase()) 
-            //  row.price.includes(Number(searchedVal)) 
+      return row.name.toLowerCase().includes(searchedVal?.toLowerCase()) ||
+        row.code.toLowerCase().includes(searchedVal?.toLowerCase()) ||
+        row.id.toLowerCase().includes(searchedVal?.toLowerCase()) ||
+        row.price > parseInt(searchedVal) ||
+        row.price === parseInt(searchedVal) ||
+        row.durability === parseInt(searchedVal) ||
+        row.availability.toString().toLowerCase().includes(searchedVal?.toLowerCase())
+      //  row.price.includes(Number(searchedVal)) 
     });
     setData(filteredRows);
   };
@@ -405,21 +404,21 @@ function App() {
   return (
     <div className="table__area">
       <ToastContainer />
-      <Box style={{padding: "15px"}} sx={{ display: 'flex', alignItems: 'flex-end' }}>
+      <Box style={{ padding: "15px" }} sx={{ display: 'flex', alignItems: 'flex-end' }}>
         <TextField
-                fullWidth
-                id="standard-bare"
-                variant="outlined"
-                placeholder="How can we help"
-                onChange={(searchVal) => requestSearch(searchVal.target.value)}
-                InputProps={{
-                  endAdornment: (
-                    <IconButton>
-                      <SearchOutlined />
-                    </IconButton>
-                  ),
-                }}
-              />
+          fullWidth
+          id="standard-bare"
+          variant="outlined"
+          placeholder="How can we help"
+          onChange={(searchVal) => requestSearch(searchVal.target.value)}
+          InputProps={{
+            endAdornment: (
+              <IconButton>
+                <SearchOutlined />
+              </IconButton>
+            ),
+          }}
+        />
       </Box>
       <DataTable
         fixedHeader
@@ -433,7 +432,6 @@ function App() {
         <button onClick={() => returnSubmit()}> Return </button>
       </div>
 
-      {/* <SearchBar onChange={(searchVal) => requestSearch(searchVal.target.value)} /> */}
       {/* BOOKING FROM  */}
       <Modal
         onClose={handleClose}
